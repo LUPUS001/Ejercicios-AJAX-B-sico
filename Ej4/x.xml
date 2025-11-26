@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<animales>
+    <animal>
+        <especie>Elefante</especie>
+        <especie>Julio</especie>
+    </animal>
+    <animal>
+        <especie>Lobo</especie>
+        <especie>Oso</especie>
+        <especie>Leon</especie>
+    </animal>
+</animales>

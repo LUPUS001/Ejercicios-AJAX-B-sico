@@ -1,0 +1,1 @@
+document.getElementById('contenedor').innerHTML = '<h1>A</h1>'
