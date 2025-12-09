@@ -1,0 +1,82 @@
+<html>
+    <head>
+        <title>Ejemplo con Ajax para sacar Fichero de Texto </title>
+    </head>
+    <body>
+        <h1>Mostrar Fichero de Texto en Ajax</h1>
+        
+        <!-- Aqui simplemente hay un formulario con un botón (el Botón y el Evento)-->
+        <form>
+            <input type = "button" value = "Mostrar Fichero" onclick = "sacardatos('Ej1.txt','contenedor')">
+            <!-- Al pulsar este botón se ejecuta la función sacardatos() 
+                Hay 2 argumentos:  
+                    - Ej1.txt el nombre del archivo que queremos obtener
+                    - 'contenedor' el ID del elemento donde queremos obtener el contenido
+            -->
+            <!-- 
+                type = "button" -> definimos que es un botón 
+                value = "Mostrar Fichero" -> el texto que veremos en el botón
+            -->
+
+        </form>
+        <!-- ¿Por qué metemos el botón dentro de un formulario?
+            En ese caso, el <form> es muy útil porque actúa como una "bolsa" que recolecta todos los datos automáticamente 
+            para enviarlos por AJAX. Si no utilizaramos form tendríamos que enviar datos de 1 en 1 
+        -->
+        
+        <!-- "El destino" 
+            Cuando JS trae los datos del archivo Ej1.txt necesita un lugar en donde dejarlos.
+            Al crear un <div> con un nombre (id="contenedor"), estás delimitando una zona segura. 
+            Le dices a JavaScript: "No toques nada de la página, solo lo que esté DENTRO de esta caja".
+        -->
+        <div id="contenedor" style="background-color:#99FF66;">
+            <p> Mostrar&aacute; contenido del fichero </p>
+        </div>
+
+        <!-- 
+            id="contenedor" -> esta es la parte más importante ya que es el DNI que identifica a esta caja 
+            style="" -> para que tenga un color de fondo y que podamos ver donde aparece el texto cuando llegue
+            <p> Mostrar&aacute;... </p> -> Este es un texto de relleno. Cuando AJAX funcione, este texto desaparecerá y será sustituido por lo que haya dentro de Ej1.txt.
+            Antes del click aparecerá este parrafo con su texto, pero luego del click se borra todo lo que había en el contenedor(en este caso el párrafo) y mete el contenido que trae el archivo de texto (Ej1.txt)
+        -->
+
+        <!-- "El cerebro" (El HTML es tonto, solo estructura cosas. No sabe hacer peticiones a servidores.) -->
+        <script src="Ej1.js"></script>
+    </body>
+</html>
+
+<!-- EXPLICACIÓN EXTRA DEL BOTÓN
+    Piensa en la función sacardatos como si fuera el Jefe de Camareros. Tú (el HTML) no sabes cocinar 
+    ni buscar archivos, así que llamas al Jefe de Camareros y le das dos instrucciones (argumentos):
+
+    'Ej1.txt' (¿Qué quiero?): Le estás diciendo "Ve a la cocina (servidor) y tráeme el archivo llamado Ej1.txt".
+
+    'contenedor' (¿Dónde lo pongo?): Le estás diciendo "Cuando vuelvas con la comida, ponla en la mesa que tiene la etiqueta contenedor".
+-->
+
+<!-- EXPLICACIÓN EXTRA DEL CONTENEDOR 
+    id="contenedor": Esto es vital. Es el DNI o el nombre único de esta caja.
+
+    ¿Recuerdas que arriba le dijimos al botón que usara 'contenedor'? Gracias a este id, 
+    el código JavaScript sabe exactamente en qué parte de la pantalla tiene que pegar el texto que 
+    traiga del servidor. Si cambias este nombre aquí, tienes que cambiarlo en el botón.
+-->
+
+<!-- RESUMEN DEL FUNCIONAMIENTO
+
+    1. El navegador carga tu página HTML y muestra el botón y la caja verde.
+
+    2. El navegador lee la última línea y carga el cerebro (Ej1.js) en memoria.
+
+    3. Tú haces CLIC en el botón.
+
+    4. El evento onclick se dispara y llama a la función sacardatos.
+
+    5. La función (que está en el archivo JS) va "por detrás" (asíncronamente) a buscar el archivo Ej1.txt.
+
+    6. Mientras lo busca, tú puedes seguir moviendo el ratón (la página no se congela).
+
+    7. Cuando el archivo llega, la función busca la caja con id="contenedor" y reemplaza su contenido interior con el texto del archivo.
+
+    8. ¡La página se actualiza sin recargarse!
+-->
