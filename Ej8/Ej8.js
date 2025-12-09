@@ -5,6 +5,7 @@ function sacardatos(datos, idDiv){
     objeto.open("GET", datos);
     objeto.onreadystatechange = function(){
         if (objeto.readyState == 4 && objeto.status == 200) {
+            // Mostramos el texto tal cual
             lugar.innerHTML = objeto.responseText;
         }
     }

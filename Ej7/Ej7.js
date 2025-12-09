@@ -1,7 +1,8 @@
-var objeto = new XMLHttpRequest
+var objeto = new XMLHttpRequest();
 
 function sacardatos(datos, idDiv){
     var lugar = document.getElementById(idDiv);
+    // 'datos' ya incluye el ?nombre=Valor
     objeto.open("GET", datos);
     objeto.onreadystatechange = function(){
         if (objeto.readyState == 4 && objeto.status == 200) {
