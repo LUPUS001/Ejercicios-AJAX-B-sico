@@ -1,7 +1,6 @@
 var objeto = new XMLHttpRequest
 
-function sacardatos(datos, idDiv){
-    var lugar = document.getElementById(idDiv);
+function sacardatos(datos){
     objeto.open("GET", datos);
     objeto.onreadystatechange = function(){
         if (objeto.readyState == 4 && objeto.status == 200) {
