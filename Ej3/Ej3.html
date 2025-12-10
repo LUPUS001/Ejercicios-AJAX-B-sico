@@ -1,17 +1,21 @@
-<html>
-    <head>
-        <title>Ejemplo con Ajax para sacar Fichero de Texto </title>
-    </head>
-    <body>
-        <h1>Mostrar Fichero de Texto en Ajax</h1>
-        <form>
-            <input type = "button" value = "Mostrar imagen" onclick = "sacardatos()">
-        </form>
-        
-        <div id="contenedor" style="background-color:#FFFFFF;">
-            <img src="perroMeditando.jpg" id="imagen">
-        </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Title</title>
+</head>
+<body>
+    <h1>Mostrar Html en Ajax</h1>
+    
+    <form>
+        <input type = "button" value = "Mostrar primero" onclick = "sacardatos('img.txt')">
+    </form>
 
-        <script src="Ej3.js"></script>
-    </body>
+    <div id="contenedor" style="background-color:#e0f7fa; padding:10px;">
+        <img src="perro_meditando.jpg" id="imagen">
+    </div>
+
+    <script src="Ej3.js"></script>
+</body>
 </html>
