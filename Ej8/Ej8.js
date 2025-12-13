@@ -1,13 +1,16 @@
-var objeto = new XMLHttpRequest();
+var enlace = new XMLHttpRequest();
 
-function sacardatos(datos, idDiv){
-    var lugar = document.getElementById(idDiv);
-    objeto.open("GET", datos);
-    objeto.onreadystatechange = function(){
-        if (objeto.readyState == 4 && objeto.status == 200) {
-            // Mostramos el texto tal cual
-            lugar.innerHTML = objeto.responseText;
+function sacardatos(url, idDiv) {
+    enlace.open("GET", url, true);
+    
+    enlace.onreadystatechange = function() {
+        if (enlace.readyState == 4 && enlace.status == 200) {
+            var datos = JSON.parse(enlace.responseText);
+            var salida = datos.nombre + "<br>" + datos.duracion;
+
+            document.getElementById(idDiv).innerHTML = salida;
         }
-    }
-    objeto.send(null);
+    };
+    
+    enlace.send(null);
 }
