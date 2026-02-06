@@ -1,16 +1,3 @@
-//Enunciado
-/*Debes crear una pagina para una agencia de viajes que nos muestre una
-imagen, un texto que se encuentra en un fichero que estara almacenado en
-un servidor web y que se cargara asincronamente cada vez que se ejecute
-la pagina y un boton.
-    -Al pasar el raton por encima de la imagen utilizando los efectos de
-    fundido se convertira en transparente y volvera a aparecer.
-    -Cuando pinches sobre el boton "Cambiar color fondo" se ejecutara
-    un plugin que habras creado para darle un color de fondo al parrafo
-    del punto anterior.
-    -No puedes utilizar en esta parte los metodos de ajax en jquery. Hay
-    que implementarlo segun lo visto en el bloque 2. */
-
 document.addEventListener("DOMContentLoaded", createContent);
 
 function createContent(){
@@ -56,4 +43,5 @@ function loadImg(){
         }
     };
     ajaxObj.send();
+
 }
