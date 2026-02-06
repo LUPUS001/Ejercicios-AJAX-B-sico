@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agencia de Viajes Paraíso</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; background-color: #f4f4f4; }
+        .container { max-width: 600px; margin: 20px auto; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        
+        #imagen-viaje {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s; /* Suavizado extra CSS (opcional) */
+        }
+
+        #contenedor-texto {
+            margin: 20px 0;
+            padding: 15px;
+            min-height: 50px;
+            border: 1px dashed #ccc;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover { background-color: #0056b3; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Viajes Paraíso</h1>
+
+        
+        <img id="imagen-viaje" src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=400&q=80" alt="Playa Tropical">
+
+        <div id="contenedor-texto">Cargando información...</div>
+
+        <button id="btn-cambiar-fondo">Cambiar color fondo</button>
+    </div>
+
+    <script>
+        /* -----------------------------------------------------
+           REQUISITO 1: CARGA ASÍNCRONA SIN JQUERY AJAX
+           Implementación nativa con XMLHttpRequest (Bloque 2)
+        ----------------------------------------------------- */
+        function cargarTextoAsincrono() {
+            var xhr = new XMLHttpRequest();
+            // Asegúrate de que viaje.txt existe en la misma carpeta
+            xhr.open("GET", "viaje.txt", true);
+
+            xhr.onreadystatechange = function() {
+                // Estado 4 = Completado, Status 200 = OK
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    document.getElementById("contenedor-texto").innerText = xhr.responseText;
+                } else if (xhr.readyState === 4 && xhr.status !== 200) {
+                    document.getElementById("contenedor-texto").innerText = "Error al cargar el texto. Asegúrate de usar un servidor web.";
+                }
+            };
+
+            xhr.send();
+        }
+
+        // Ejecutar la carga cuando la página esté lista
+        window.onload = function() {
+            cargarTextoAsincrono();
+        };
+
+        /* -----------------------------------------------------
+           REQUISITO 2: PLUGIN JQUERY PROPIO
+           Creación de plugin para cambiar color de fondo
+        ----------------------------------------------------- */
+        (function($) {
+            $.fn.miPluginColorFondo = function(opciones) {
+                // Configuración por defecto
+                var settings = $.extend({
+                    color: "#e0f7fa", // Un azul claro tipo 'viaje'
+                }, opciones );
+
+                // Aplicar el estilo CSS a los elementos seleccionados
+                return this.css("background-color", settings.color);
+            };
+        }(jQuery));
+
+        /* -----------------------------------------------------
+           LÓGICA JQUERY (Eventos)
+        ----------------------------------------------------- */
+        $(document).ready(function() {
+            
+            // REQUISITO 3: Efecto de fundido (Transparencia) al pasar el ratón
+            $("#imagen-viaje").hover(
+                function() {
+                    // Mouse entra: Se vuelve transparente (opacidad 0)
+                    $(this).stop(true, true).fadeTo("slow", 0);
+                }, 
+                function() {
+                    // Mouse sale: Vuelve a aparecer (opacidad 1)
+                    $(this).stop(true, true).fadeTo("slow", 1);
+                }
+            );
+
+            // REQUISITO 4: Botón ejecuta el plugin
+            $("#btn-cambiar-fondo").click(function() {
+                // Llamamos a nuestro plugin creado arriba sobre el párrafo
+                $("#contenedor-texto").miPluginColorFondo({
+                    color: "#ffe082" // Color amarillo playa
+                });
+            });
+
+        });
+    </script>
+</body>
+</html>

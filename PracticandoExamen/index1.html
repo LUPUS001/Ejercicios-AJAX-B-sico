@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Agencia de Viajes</title>
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+    
+    <script src="cargarTexto/cA.js"></script>
+    <script src="trans/op.js"></script>
+    <script src="plugin/plugin.js"></script>
+</head>
+<body>
+
+    <h1>Robe, la leyenda de Extremadura</h1>
+
+    <img id="imgRobe" src="robe.jpeg" alt="Robe" width="400">
+
+    <button id="btnColor">Cambiar color fondo</button>
+
+    <div id="textoDestino">Cargando ofertas...</div>
+
+    <script>
+        $(document).ready(function(){
+            // Lógica del botón para activar el plugin
+            $("#btnColor").click(function(){
+                // Buscamos el párrafo que creó el AJAX y le aplicamos TU plugin
+                $(".ajaxParagraph").cambiarFondo(); 
+            });
+        });
+    </script>
+
+</body>
+</html>

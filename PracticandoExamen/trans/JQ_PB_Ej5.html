@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .grande { font-size: 16pt; }
+    </style>
+    <title>Ejercicio 5</title>
+</head>
+<body>
+    <p id="parrafoTamano">Este párrafo cambiará de tamaño al pasar el ratón por encima</p>
+    
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js" 
+    integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" 
+    crossorigin="anonymous"></script>
+    
+    <script>
+        $("#parrafoTamano").hover(
+            function() { 
+                // Al entrar el ratón
+                $(this).addClass("grande"); 
+            }, 
+            function() { 
+                // Al salir el ratón
+                $(this).removeClass("grande"); 
+            }
+        );
+    </script>
+</body>
+</html>
+
+<!-- 
+5º) Crea un párrafo con el siguiente texto:
+ Este párrafo cambiará de tamaño al pasar el ratón por encima
+Utilizando clases, crea una clase para que cada vez que pases con el ratón por encima del
+párrafo cambie de tamaño a 16pt, cuando salgamos con el ratón del párrafo debe volver a su
+tamaño inicial.
+-->

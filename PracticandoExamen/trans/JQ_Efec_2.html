@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 2</title>
+    <style>
+        #fondoAzul {
+            background-color: blue; padding: 50px; text-align: center;
+        }
+        #mensaje {
+            color: white; opacity: 0;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+</head>
+<body>
+    <h3>Ejercicio 2</h3>
+    <div id="fondoAzul" >
+        <h2 id="mensaje">Bienvenidos a esta aplicación</h2>
+    </div>
+    <button id="btn-saludo">Saludo</button>
+    <button id="btn-despedida">Despedida</button>
+
+    <script>
+        $(document).ready(function(){
+            $("#btn-saludo").click(function(){
+                // Opacidad 1 = visible
+                $("#mensaje").fadeTo("slow", 1);
+            });
+
+            $("#btn-despedida").click(function(){
+                // Opacidad 0 = transparente (pero ocupa espacio)
+                $("#mensaje").fadeTo("slow", 0);
+            });
+        })
+    </script>
+</body>
+</html>
+
+
+<!-- 
+2º) Sobre un fondo de color azul muestra en el centro de la pantalla un mensaje con el texto
+“Bienvenidos a esta aplicación” que cambie de transparente a opaco al pinchar sobre el botón
+“Saludo” y a la inversa, de opaco a transparente al pinchar sobre el botón “Despedida”
+-->

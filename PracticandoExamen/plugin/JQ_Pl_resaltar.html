@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+    <title>Ejercicio</title>
+</head>
+<body>
+    <p class="texto">Este texto se va a resaltar al pulsar el botón.</p>
+    <button id="btnResaltar">Resaltar Texto</button>
+
+    <script>
+        (function($){
+            $.fn.resaltar = function() {
+                this.each(function(){
+                    $(this).css({
+                        "border": "8px solid purple",
+                        "border-radius": "20px",
+                        "font-weight": "bold",
+                        "padding": "15px"
+                    });
+                });
+                return this;
+            };
+        })(jQuery);
+
+        $(document).ready(function(){
+            $("#btnResaltar").click(function(){
+                $(".texto").resaltar()
+            })
+        })
+    </script>
+</body>
+</html>
